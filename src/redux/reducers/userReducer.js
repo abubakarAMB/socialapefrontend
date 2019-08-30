@@ -27,9 +27,10 @@ export default function(state = initialState, action) {
       return initialState;
     case SET_USER:
       return {
+        ...state,
         authenticated: true,
         loading: false,
-        ...action.payload
+        ...action.payload.userData
       };
     case LOADING_USER:
       return {
@@ -59,6 +60,7 @@ export default function(state = initialState, action) {
       return {
         ...state
       };
+    
     default:
       return state;
   }

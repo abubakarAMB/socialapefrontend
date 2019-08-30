@@ -5,10 +5,11 @@ import {
   LOADING_UI,
   SET_UNAUTHENTICATED,
   LOADING_USER,
-  MARK_NOTIFICATIONS_READ
+  MARK_NOTIFICATIONS_READ,
+  SET_USER_PROFILE
 } from '../types';
 import axios from 'axios';
-
+//
 export const loginUser = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
@@ -72,7 +73,7 @@ export const uploadImage = (formData) => (dispatch) => {
       dispatch(getUserData());
     })
     .catch((err) => console.log(err));
-};
+  };
 
 export const editUserDetails = (userDetails) => (dispatch) => {
   dispatch({ type: LOADING_USER });
@@ -100,3 +101,4 @@ const setAuthorizationHeader = (token) => {
   localStorage.setItem('FBIdToken', FBIdToken);
   axios.defaults.headers.common['Authorization'] = FBIdToken;
 };
+

@@ -10,7 +10,8 @@ import {
   LOADING_UI,
   SET_SCREAM,
   STOP_LOADING_UI,
-  SUBMIT_COMMENT
+  SUBMIT_COMMENT,
+  SET_USER_PROFILE
 } from '../types';
 import axios from 'axios';
 
@@ -135,4 +136,22 @@ export const getUserData = (userHandle) => (dispatch) => {
 
 export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
+};
+
+export const setUserProfile = (userHandle) => (dispatch)=>{
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/user/${userHandle}`)
+    .then((res) => {
+      dispatch({
+        type: SET_USER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: SET_USER_PROFILE,
+        payload: null
+      });
+    });
 };

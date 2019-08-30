@@ -17,6 +17,7 @@ const styles = (theme) => ({
 });
 
 const StaticProfile = (props) => {
+  console.log(props);
   const {
     classes,
     profile: { handle, createdAt, imageUrl, bio, website, location }

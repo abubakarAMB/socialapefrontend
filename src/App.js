@@ -18,13 +18,13 @@ import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
 import user from './pages/user';
-
+import userTest from "./pages/userTest";
 import axios from 'axios';
 
 const theme = createMuiTheme(themeObject);
 
 axios.defaults.baseURL =
-  'https://europe-west1-socialape-d081e.cloudfunctions.net/api';
+  'https://us-central1-socialape-2e66d.cloudfunctions.net/api';
 
 const token = localStorage.FBIdToken;
 if (token) {
@@ -51,7 +51,7 @@ class App extends Component {
                 <Route exact path="/" component={home} />
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
-                <Route exact path="/users/:handle" component={user} />
+                <Route exact path="/users/:handle" component={userTest} />
                 <Route
                   exact
                   path="/users/:handle/scream/:screamId"
